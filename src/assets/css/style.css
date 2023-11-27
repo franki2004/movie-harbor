@@ -1,12 +1,3 @@
-/******************************************************************
-  Theme Name: Anime
-  Description: Anime video tamplate
-  Author: Colorib
-  Author URI: https://colorib.com/
-  Version: 1.0
-  Created: Colorib
-******************************************************************/
-
 /*------------------------------------------------------------------
 [Table of contents]
 
@@ -225,12 +216,14 @@ ol {
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
+
 	50% {
 		-webkit-transform: rotate(180deg);
 		transform: rotate(180deg);
 		border: 4px solid #673ab7;
 		border-left-color: transparent;
 	}
+
 	100% {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
@@ -245,11 +238,13 @@ ol {
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
+
 	50% {
 		-webkit-transform: rotate(180deg);
 		border: 4px solid #673ab7;
 		border-left-color: transparent;
 	}
+
 	100% {
 		-webkit-transform: rotate(360deg);
 		border: 4px solid #f44336;
@@ -2015,13 +2010,16 @@ ol {
 	.hero {
 		overflow: hidden;
 	}
+
 	.login__form {
 		position: relative;
 		padding-left: 32px;
 	}
+
 	.login__social__links ul li a {
 		width: 380px;
 	}
+
 	.blog__item__text {
 		padding: 0 50px;
 	}
@@ -2033,26 +2031,32 @@ ol {
 	.hero {
 		overflow: hidden;
 	}
+
 	.header {
 		position: relative;
 	}
+
 	.header .container {
 		position: relative;
 	}
+
 	.header__right {
 		position: absolute;
 		right: 120px;
 		top: -42px;
 		padding: 0;
 	}
+
 	.header__menu {
 		display: none;
 	}
+
 	.slicknav_menu {
 		background: transparent;
 		padding: 0;
 		display: block;
 	}
+
 	.slicknav_nav {
 		position: absolute;
 		left: 0;
@@ -2062,9 +2066,11 @@ ol {
 		padding: 15px 30px;
 		z-index: 9;
 	}
+
 	.slicknav_nav ul {
 		margin: 0;
 	}
+
 	.slicknav_nav .slicknav_row,
 	.slicknav_nav a {
 		padding: 7px 0;
@@ -2072,6 +2078,7 @@ ol {
 		color: #111111;
 		font-weight: 600;
 	}
+
 	.slicknav_btn {
 		border-radius: 0;
 		background-color: #222;
@@ -2079,54 +2086,69 @@ ol {
 		right: 0;
 		top: 9px;
 	}
+
 	.slicknav_nav .slicknav_arrow {
 		color: #111111;
 	}
+
 	.slicknav_nav .slicknav_row:hover {
 		border-radius: 0;
 		background: transparent;
 		color: #111111;
 	}
+
 	.slicknav_nav a:hover {
 		border-radius: 0;
 		background: transparent;
 		color: #111111;
 	}
+
 	.product__sidebar {
 		padding-top: 50px;
 	}
+
 	.footer__logo {
 		text-align: center;
 		margin-bottom: 20px;
 	}
+
 	.footer__nav {
 		margin-bottom: 15px;
 	}
+
 	.footer__copyright__text {
 		text-align: center;
 	}
+
 	.anime__details__widget ul li span {
 		width: 90px;
 	}
+
 	.anime__details__pic {
 		margin-bottom: 40px;
 	}
+
 	.anime__details__sidebar {
 		padding-top: 50px;
 	}
+
 	.login__form {
 		padding-left: 0;
 		margin-bottom: 40px;
 	}
+
 	.login__form:after {
 		display: none;
 	}
+
 	.login__form form .input__item {
 		width: auto;
 	}
+
 	.login__register {
 		padding-left: 0;
 	}
+
 	.signup .login__social__links {
 		padding-left: 0;
 	}
@@ -2138,26 +2160,32 @@ ol {
 	.hero {
 		overflow: hidden;
 	}
+
 	.header {
 		position: relative;
 	}
+
 	.header .container {
 		position: relative;
 	}
+
 	.header__right {
 		position: absolute;
 		right: 120px;
 		top: -42px;
 		padding: 0;
 	}
+
 	.header__menu {
 		display: none;
 	}
+
 	.slicknav_menu {
 		background: transparent;
 		padding: 0;
 		display: block;
 	}
+
 	.slicknav_nav {
 		position: absolute;
 		left: 0;
@@ -2167,9 +2195,11 @@ ol {
 		padding: 15px 30px;
 		z-index: 9;
 	}
+
 	.slicknav_nav ul {
 		margin: 0;
 	}
+
 	.slicknav_nav .slicknav_row,
 	.slicknav_nav a {
 		padding: 7px 0;
@@ -2177,6 +2207,7 @@ ol {
 		color: #111111;
 		font-weight: 600;
 	}
+
 	.slicknav_btn {
 		border-radius: 0;
 		background-color: #222;
@@ -2184,90 +2215,115 @@ ol {
 		right: 0;
 		top: 9px;
 	}
+
 	.slicknav_nav .slicknav_arrow {
 		color: #111111;
 	}
+
 	.slicknav_nav .slicknav_row:hover {
 		border-radius: 0;
 		background: transparent;
 		color: #111111;
 	}
+
 	.slicknav_nav a:hover {
 		border-radius: 0;
 		background: transparent;
 		color: #111111;
 	}
+
 	.product__sidebar {
 		padding-top: 50px;
 	}
+
 	.footer__logo {
 		text-align: center;
 		margin-bottom: 20px;
 	}
+
 	.footer__nav {
 		margin-bottom: 15px;
 	}
+
 	.footer__copyright__text {
 		text-align: center;
 	}
+
 	.blog__details__title h2 {
 		font-size: 34px;
 		line-height: normal;
 	}
+
 	.anime__details__pic {
 		margin-bottom: 40px;
 	}
+
 	.anime__details__sidebar {
 		padding-top: 50px;
 	}
+
 	.btn__all {
 		text-align: left;
 	}
+
 	.product__page__title .section-title {
 		margin-bottom: 30px;
 	}
+
 	.product__page__title .product__page__filter {
 		text-align: left;
 	}
+
 	.anime__details__rating {
 		text-align: left;
 		position: relative;
 		margin-bottom: 20px;
 	}
+
 	.blog__details__social {
 		overflow: hidden;
 	}
+
 	.blog__details__title .blog__details__social a {
 		margin-right: 10px;
 		margin-bottom: 10px;
 		width: calc(50% - 10px);
 		float: left;
 	}
+
 	.login__form {
 		padding-left: 0;
 		margin-bottom: 40px;
 	}
+
 	.login__form:after {
 		display: none;
 	}
+
 	.login__form form .input__item {
 		width: auto;
 	}
+
 	.signup .login__social__links {
 		padding-left: 0;
 	}
+
 	.login__social__links ul li a {
 		width: auto;
 	}
+
 	.blog__item__text {
 		padding: 0 30px;
 	}
+
 	.login__register {
 		padding-left: 0;
 	}
+
 	.product__sidebar__view .filter__controls li {
 		margin-right: 2px;
 	}
+
 	.search-model-form input {
 		width: 100%;
 	}
@@ -2279,63 +2335,81 @@ ol {
 	.hero__slider.owl-carousel .owl-nav {
 		display: none;
 	}
+
 	.hero__items {
 		padding: 250px 0 42px 15px;
 	}
+
 	.hero__text h2 {
 		font-size: 32px;
 	}
+
 	.footer__nav ul li {
 		margin-right: 10px;
 	}
+
 	.anime__details__btn .follow-btn {
 		padding: 14px 26px;
 		margin-right: 11px;
 		margin-bottom: 25px;
 	}
+
 	.anime__details__widget ul li span {
 		width: 85px;
 	}
+
 	.anime__video__player .plyr__volume {
 		left: 65px;
 	}
+
 	.anime__video__player .plyr__controls .plyr__controls__item.plyr__time {
 		left: 95px;
 	}
+
 	.anime__video__player .plyr__menu {
 		margin-right: 60px;
 	}
+
 	.blog__details__title h2 {
 		font-size: 30px;
 		line-height: normal;
 	}
+
 	.blog__details__title .blog__details__social a {
 		padding: 16px 25px 14px 20px;
 	}
+
 	.blog__details__comment__item.blog__details__comment__item--reply {
 		padding-left: 0;
 	}
+
 	.blog__details__comment__item__pic {
 		margin-right: 25px;
 	}
+
 	.blog__details__comment__item__text a {
 		margin-right: 6px;
 	}
+
 	.login__social__links ul li a i {
 		left: 20px;
 	}
+
 	.login__form .forget_pass {
 		position: relative;
 		left: 0;
 		bottom: 0;
 		margin-top: 25px;
 	}
+
 	.header__right a {
 		margin-right: 10px;
 	}
+
 	.anime__review__item__text h6 span {
 		font-size: 12px;
 	}
+
 	.anime__review__item__text {
 		padding: 18px 20px 20px;
 	}
