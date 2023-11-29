@@ -13,6 +13,11 @@ export const getOne = async (movieId) => {
 
     return result;
 }
+export const getLatest = async () => {
+    const result = await request.get(`${baseUrl}?sortBy=_createdOn`);
+    
+    return result;
+}
 
 export const create = async (movieData) => {
     const result = await request.post(baseUrl, movieData);

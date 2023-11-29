@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TrendingMovie from "./TrendingMovie/TrendingMovie";
-import * as movieService from '../../../../services/movieService';
+import * as movieService from '../../../../services/MovieService';
 export default function TrendingMovieList() {
 
     const [trendingMovies, setTrendingMovies] = useState([])
