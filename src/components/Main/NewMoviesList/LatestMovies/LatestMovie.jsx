@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
 
 export default function NewMovie({
     _id,
     title,
-    clickCount,
     img
 }) {
     return (
@@ -11,11 +11,10 @@ export default function NewMovie({
             className="product__sidebar__view__item"
             style={{
                 backgroundImage: `url(${img})`,
-                backgroundSize: 'cover',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-            }}
-        >
-            <div className="view"><i className="fa fa-eye"></i> {clickCount}</div>
+            }}>
             <h5>
                 <Link to={`/movies/${_id}`}>{title}</Link>
             </h5>

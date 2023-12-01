@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import * as movieService from '../../../../services/MovieService'
+import * as movieService from '../../../services/MovieService'
 import LatestMovie from './LatestMovies/LatestMovie'
 
 

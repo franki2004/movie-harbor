@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+import Path from "../paths"
 export default function Header() {
     return (
         <>
@@ -6,9 +8,7 @@ export default function Header() {
                     <div className="row">
                         <div className="col-lg-2">
                             <div className="header__logo">
-                                <a href="./index.html">
-                                    <img src="img/logo.png" alt="" />
-                                </a>
+                            <Link to={Path.Home}><img src="img/logo.png" alt="logo" /></Link>
                             </div>
                         </div>
                         <div className="col-lg-8">
