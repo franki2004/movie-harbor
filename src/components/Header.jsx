@@ -8,7 +8,7 @@ export default function Header() {
                     <div className="row">
                         <div className="col-lg-2">
                             <div className="header__logo">
-                            <Link to={Path.Home}><img src="img/logo.png" alt="logo" /></Link>
+                            <Link to={Path.Home}><img src='/img/logo.png' alt="logo" /></Link>
                             </div>
                         </div>
                         <div className="col-lg-8">

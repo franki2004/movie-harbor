@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import * as movieService from '../../../services/MovieService'
+import * as movieService from '../../../services/movieService'
 import LatestMovie from './LatestMovies/LatestMovie'
 
 
@@ -18,7 +18,7 @@ export default function NewMovieList() {
             ))}
 
             {latestMovies.length === 0 && (
-                <h3>No new Movies</h3>)
+                <h2>No new Movies</h2>)
             }
         </>
 

@@ -6,7 +6,9 @@ export default function TrendingMovie({
     title,
     category,
     clickCount,
-    img }) {
+    reviewsCount,
+    img }) 
+    {
     return (
         <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="product__item">
@@ -18,13 +20,10 @@ export default function TrendingMovie({
                         backgroundPosition: 'center',  
                     }}
                 >
-                    <div className="comment"><i className="fa fa-comments"></i> 11</div>
+                    <div className="comment"><i className="fa fa-comments"></i> {reviewsCount} </div>
                     <div className="view"><i className="fa fa-eye"></i> {clickCount} </div>
                 </div>
                 <div className="product__item__text">
-                    <ul>
-                        <li>{category}</li>
-                    </ul>
                     <Link to={`/movies/${_id}`}>{title}</Link>
                 </div>
             </div>

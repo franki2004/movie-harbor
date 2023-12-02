@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import * as movieService from '../../services/MovieService'
+import * as movieService from '../../services/movieService'
 import * as reviewService from '../../services/reviewService'
-import Review from "./Reviews/Review"
+import ReviewForm from "./ReviewForm"
+
 export default function MovieDetails() {
     const { movieId } = useParams()
     const [movie, setMovie] = useState({})
@@ -43,7 +44,7 @@ export default function MovieDetails() {
                                     <div className="rating">
                                         Percent Positive Reviews
                                     </div>
-                                    <span>Number Reviews</span>
+                                    <span>{reviews.length} Reviews</span>
                                 </div>
                                 <p>{movie.description}</p>
 
@@ -59,10 +60,7 @@ export default function MovieDetails() {
                                 <div className="section-title">
                                     <h5>Your Review</h5>
                                 </div>
-                                <form action="#">
-                                    <textarea placeholder="Your Review"></textarea>
-                                    <button type="submit"><i className="fa fa-location-arrow"></i> Review</button>
-                                </form>
+                                <ReviewForm movieId={movie._id}/>
                             </div>
                             <div className="section-title">
                                 <h5>Reviews</h5>
@@ -73,9 +71,6 @@ export default function MovieDetails() {
                                 const formattedDate = `${reviewDate.getDate()}-${reviewDate.getMonth() + 1}-${reviewDate.getFullYear()}`
                                 return (
                                     <div key={_id} className="anime__review__item">
-                                        <div className="anime__review__item__pic">
-                                            <img src="img/anime/review-1.jpg" alt="" />
-                                        </div>
                                         <div className="anime__review__item__text">
                                             <h6>{email} - <span>{formattedDate}</span></h6>
                                             <p>{content}</p>
