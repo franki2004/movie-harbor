@@ -11,6 +11,7 @@ import MovieDetails from './components/MovieDetails/MovieDetails';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Logout from './components/Auth/Logout';
+import NotFound from './components/NotFound/Notfound'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
                 <Route path={Path.Login} element={<Login />} />
                 <Route path={Path.Register} element={<Register />} />
                 <Route path={Path.Logout} element={<Logout />} />
+                <Route path={Path.NotFound} element={<NotFound/>} />
             </Routes>
 
             <Footer />

@@ -3,7 +3,7 @@ import Path from "../paths"
 import { useContext } from "react"
 import AuthContext from "../contexts/authContext";
 export default function Header() {
-    const { isAuthenticated, email} = useContext(AuthContext);
+    const { isAuthenticated, email } = useContext(AuthContext);
     return (
         <>
             <header className="header">
@@ -36,8 +36,8 @@ export default function Header() {
                             <div className="header__right">
                                 <a href="#" className="search-switch"><span className="icon_search"></span></a>
 
-                                <Link to={!isAuthenticated?Path.Login:Path.Logout}><span className="icon_profile" /></Link>
-
+                                {!isAuthenticated? <Link to={Path.Login}><i className="fa fa-sign-in" aria-hidden="true"></i></Link>:
+                                <Link to={Path.Logout}><i className="fa fa-sign-out" aria-hidden="true"></i></Link>}
 
                                 {isAuthenticated && <p style={{ display: "inline", color: "white" }}>{email}</p>}
                             </div>
