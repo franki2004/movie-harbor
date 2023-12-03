@@ -28,7 +28,6 @@ export default function TrendingMovieList() {
                     const reviews = await reviewService.getAll(movie._id);
                     counts[movie._id] = reviews.length;
                 }
-                console.log(counts);
                 setReviewsCounts(counts);
                 
             } catch (error) {

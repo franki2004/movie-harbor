@@ -1,10 +1,14 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useContext } from "react";
 import * as reviewService from '../../services/reviewService'
-export default function ReviewForm(movieId) {
+import AuthContext from '../../contexts/authContext'
+
+export default function ReviewForm({movieId, onReviewCreated}) {
     const [reviewText, setReviewText] = useState('');
     const [isThumbsUpSelected, setIsThumbsUpSelected] = useState(false);
     const [isThumbsDownSelected, setIsThumbsDownSelected] = useState(false);
     const [errors, setErrors] = useState([]);
+    const { isAuthenticated } = useContext(AuthContext);
 
     const handleThumbsUpClick = () => {
         setIsThumbsUpSelected(!isThumbsUpSelected);
@@ -20,6 +24,9 @@ export default function ReviewForm(movieId) {
         e.preventDefault();
 
         const newErrors = [];
+        if (!isAuthenticated) {
+            newErrors.push('You need to be logged in to review the movie.');
+        }
 
         if (reviewText.trim().length < 20) {
             newErrors.push('Review must be at least 20 characters.');
@@ -30,9 +37,17 @@ export default function ReviewForm(movieId) {
         }
 
         setErrors(newErrors);
+        const thumbs = {
+            thumbsUp: isThumbsUpSelected,
+            thumbsDown: isThumbsDownSelected,
+        };
 
         if (newErrors.length === 0) {
-            reviewService.create(movieId, e.target.value)
+            setIsThumbsDownSelected(false)
+            setIsThumbsUpSelected(false)
+            setReviewText("")
+            reviewService.create(movieId, reviewText, thumbs)
+            onReviewCreated()
         }
     };
 
@@ -48,30 +63,30 @@ export default function ReviewForm(movieId) {
                 {errors.length > 0 && (
                     <div className="error-messages">
                         {errors.map((error, index) => (
-                            <p key={index} className="error-message" style={{ color: 'red', fontSize: "bold" }} > { error }</p>
-                ))}
-            </div>
+                            <p key={index} className="error-message" style={{ color: 'red', fontSize: "bold" }} > {error}</p>
+                        ))}
+                    </div>
                 )}
-            <div className="review-buttons">
-                <button
-                    type="button"
-                    className={`thumbs-up ${isThumbsUpSelected ? 'selected' : ''}`}
-                    onClick={handleThumbsUpClick}
-                    style={{ marginRight: "0.5rem" }}
-                >
-                    <i className={`fa ${isThumbsUpSelected ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}`}></i>
-                </button>
-                <button
-                    type="button"
-                    className={`thumbs-down ${isThumbsDownSelected ? 'selected' : ''}`}
-                    onClick={handleThumbsDownClick}
-                    style={{ marginRight: "2rem" }}
-                >
-                    <i className={`fa ${isThumbsDownSelected ? 'fa-thumbs-down' : 'fa-thumbs-o-down'}`}></i>
-                </button>
-                <button type="submit"><i className="fa fa-location-arrow"></i> Review</button>
+                <div className="review-buttons">
+                    <button
+                        type="button"
+                        className={`thumbs-up ${isThumbsUpSelected ? 'selected' : ''}`}
+                        onClick={handleThumbsUpClick}
+                        style={{ marginRight: "0.5rem" }}
+                    >
+                        <i className={`fa ${isThumbsUpSelected ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}`}></i>
+                    </button>
+                    <button
+                        type="button"
+                        className={`thumbs-down ${isThumbsDownSelected ? 'selected' : ''}`}
+                        onClick={handleThumbsDownClick}
+                        style={{ marginRight: "2rem" }}
+                    >
+                        <i className={`fa ${isThumbsDownSelected ? 'fa-thumbs-down' : 'fa-thumbs-o-down'}`}></i>
+                    </button>
+                    <button type="submit"><i className="fa fa-location-arrow"></i> Review</button>
+                </div>
             </div>
-        </div>
         </form >
     );
 }

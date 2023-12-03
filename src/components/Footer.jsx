@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+import Path from "../paths"
 export default function Footer() {
     return (
         <footer className="footer">
@@ -8,13 +10,13 @@ export default function Footer() {
                 <div className="row">
                     <div className="col-lg-3">
                         <div className="footer__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+                            <Link to={Path.Home}><img src='/img/logo.png' alt="logo" /></Link>
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <div className="footer__nav">
                             <ul>
-                                <li className="active"><a href="./index.html">Homepage</a></li>
+                                <li className="active"><Link to={Path.Home}>Homepage</Link></li>
                                 <li><a href="./categories.html">Categories</a></li>
                                 <li><a href="./blog.html">Our Blog</a></li>
                                 <li><a href="#">Contacts</a></li>

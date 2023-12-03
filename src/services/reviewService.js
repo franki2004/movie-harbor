@@ -13,10 +13,11 @@ export const getAll = async (movieId) => {
     return result;
 };
 
-export const create = async (movieId, text) => {
+export const create = async (movieId, reviewText, thumbs) => {
     const newReview = await request.post(baseUrl, {
         movieId,
-        text,
+        reviewText,
+        ...thumbs
     });
 
     return newReview;

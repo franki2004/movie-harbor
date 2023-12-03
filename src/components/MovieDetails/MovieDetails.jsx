@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import * as movieService from '../../services/movieService'
@@ -8,15 +9,19 @@ export default function MovieDetails() {
     const { movieId } = useParams()
     const [movie, setMovie] = useState({})
     const [reviews, setReviews] = useState([])
+    const fetchMovieAndReviews = async () => {
+        try {
+            const movieData = await movieService.getOne(movieId);
+            const reviewsData = await reviewService.getAll(movieId);
+            setMovie(movieData);
+            setReviews(reviewsData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     useEffect(() => {
-        movieService.getOne(movieId)
-            .then(setMovie)
-            .catch(err => console.log(err))
-
-        reviewService.getAll(movieId)
-            .then(setReviews)
-            .catch(err => console.log(err))
-    }, [movieId])
+        fetchMovieAndReviews();
+    }, [movieId]);
     return (
         <section className="anime-details spad">
             <div className="container">
@@ -30,8 +35,8 @@ export default function MovieDetails() {
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
                                 }}>
-                                <div className="comment"><i className="fa fa-comments"></i> 11</div>
-                                <div className="view"><i className="fa fa-eye"></i> 9141</div>
+                                <div className="comment"><i className="fa fa-comments"></i> {reviews.length}</div>
+                                <div className="view"><i className="fa fa-eye"></i> {movie.clickCount}</div>
                             </div>
                         </div>
                         <div className="col-lg-9">
@@ -60,20 +65,20 @@ export default function MovieDetails() {
                                 <div className="section-title">
                                     <h5>Your Review</h5>
                                 </div>
-                                <ReviewForm movieId={movie._id}/>
+                                <ReviewForm movieId={movie._id} onReviewCreated={fetchMovieAndReviews} />
                             </div>
                             <div className="section-title">
                                 <h5>Reviews</h5>
                             </div>
 
-                            {reviews.map(({ _id, content, _createdOn, owner: { email } }) => {
+                            {reviews.map(({ _id, reviewText, _createdOn, owner: { email } }) => {
                                 const reviewDate = new Date(_createdOn)
                                 const formattedDate = `${reviewDate.getDate()}-${reviewDate.getMonth() + 1}-${reviewDate.getFullYear()}`
                                 return (
                                     <div key={_id} className="anime__review__item">
                                         <div className="anime__review__item__text">
                                             <h6>{email} - <span>{formattedDate}</span></h6>
-                                            <p>{content}</p>
+                                            <p>{reviewText}</p>
                                         </div>
                                     </div>)
                             })}
