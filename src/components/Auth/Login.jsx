@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import Path from "../../paths";
 import { Link } from "react-router-dom";
-import AuthContext from "../../contexts/authContext"; 
+import AuthContext from "../../contexts/authContext";
 
 export default function Login() {
-    const { loginSubmitHandler } = useContext(AuthContext); 
+    const { loginSubmitHandler } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,7 +15,7 @@ export default function Login() {
     };
 
     return (
-        <section className="login spad" style={{ marginBottom: "300px", marginTop: "47px" }}>
+        <section className="login spad" style={{ marginBottom: "198px", marginTop: "42px" }}>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6">
@@ -24,6 +24,7 @@ export default function Login() {
                             <form onSubmit={handleSubmit}>
                                 <div className="input__item">
                                     <input
+                                        style={{ color: 'black' }}
                                         type="text"
                                         placeholder="Email address"
                                         value={email}
@@ -33,6 +34,7 @@ export default function Login() {
                                 </div>
                                 <div className="input__item">
                                     <input
+                                        style={{ color: 'black' }}
                                         type="password"
                                         placeholder="Password"
                                         value={password}
@@ -44,9 +46,6 @@ export default function Login() {
                                     Login Now
                                 </button>
                             </form>
-                            <a href="#" className="forget_pass">
-                                Forgot Your Password?
-                            </a>
                         </div>
                     </div>
                     <div className="col-lg-6">
