@@ -7,11 +7,14 @@ export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [loginError, setLoginError] = useState()
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoginError()
 
-        loginSubmitHandler({ email, password });
+        loginSubmitHandler({ email, password })
+            .catch(setLoginError("Email or Password don't match."))
+
     };
 
     return (
@@ -40,6 +43,7 @@ export default function Login() {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
+                                    {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
                                     <span className="icon_lock"></span>
                                 </div>
                                 <button type="submit" className="site-btn">
