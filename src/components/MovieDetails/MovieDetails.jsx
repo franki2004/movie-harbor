@@ -22,6 +22,18 @@ export default function MovieDetails() {
     useEffect(() => {
         fetchMovieAndReviews();
     }, [movieId]);
+
+    const positiveReviews = Object.values(reviews).filter((review) => review.thumbsUp)
+    const percentPositive = (positiveReviews.length / Object.values(reviews).length) * 100
+    let color
+    if (percentPositive < 25) {
+        color = "red"
+    } else if (percentPositive >= 25 && percentPositive < 75) {
+        color = "darkorange"
+    } else {
+        color = "green"
+    }
+
     return (
         <section className="anime-details spad">
             <div className="container">
@@ -35,8 +47,6 @@ export default function MovieDetails() {
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
                                 }}>
-                                <div className="comment"><i className="fa fa-comments"></i> {reviews.length}</div>
-                                <div className="view"><i className="fa fa-eye"></i> {movie.clickCount}</div>
                             </div>
                         </div>
                         <div className="col-lg-9">
@@ -46,9 +56,7 @@ export default function MovieDetails() {
                                     <span>{movie.category}</span>
                                 </div>
                                 <div className="anime__details__rating">
-                                    <div className="rating">
-                                        Percent Positive Reviews
-                                    </div>
+                                    {reviews.length> 0 && <div className="rating" style={{color: color}}> Positive Reviews: {percentPositive.toFixed(2)}%</div>}
                                     <span>{reviews.length} Reviews</span>
                                 </div>
                                 <p>{movie.description}</p>

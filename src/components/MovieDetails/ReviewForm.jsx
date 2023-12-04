@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import * as reviewService from '../../services/reviewService'
 import AuthContext from '../../contexts/authContext'
 
-export default function ReviewForm({movieId, onReviewCreated}) {
+export default function ReviewForm({ movieId, onReviewCreated }) {
     const [reviewText, setReviewText] = useState('');
     const [isThumbsUpSelected, setIsThumbsUpSelected] = useState(false);
     const [isThumbsDownSelected, setIsThumbsDownSelected] = useState(false);
@@ -28,8 +28,10 @@ export default function ReviewForm({movieId, onReviewCreated}) {
             newErrors.push('You need to be logged in to review the movie.');
         }
 
-        if (reviewText.trim().length < 20) {
-            newErrors.push('Review must be at least 20 characters.');
+        if (reviewText.trim().length < 10) {
+            newErrors.push('Review must be at least 10 characters.');
+        } else if (reviewText.trim().length > 2000) {
+            newErrors.push("Review must not exceed 2000 characters")
         }
 
         if (!isThumbsUpSelected && !isThumbsDownSelected) {
