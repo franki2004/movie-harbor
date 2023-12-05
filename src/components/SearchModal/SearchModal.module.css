@@ -1,0 +1,76 @@
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modalContainer {
+    width: 500px;
+    height: 150px;
+    border-radius: 12px;
+    background-color: rgb(6, 6, 20);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+}
+
+
+.titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.modalContainer .body {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.xbtn {
+    color: white;
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.searchInput {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.separator {
+    width: 1px;
+    height: 20px;
+    background-color: #ccc;
+    margin: 0 5px;
+}
+
+.searchButton {
+    padding: 8px 12px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}

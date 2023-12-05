@@ -75,7 +75,7 @@ export default function ReviewForm({ movieId, onReviewCreated }) {
                         type="button"
                         className={`thumbs-up ${isThumbsUpSelected ? 'selected' : ''}`}
                         onClick={handleThumbsUpClick}
-                        style={{ marginRight: "0.5rem" }}
+                        style={{ marginRight: "0.5rem", fontSize: "15px", padding:"5px 10px" }}
                     >
                         <i className={`fa ${isThumbsUpSelected ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}`}></i>
                     </button>
@@ -83,11 +83,11 @@ export default function ReviewForm({ movieId, onReviewCreated }) {
                         type="button"
                         className={`thumbs-down ${isThumbsDownSelected ? 'selected' : ''}`}
                         onClick={handleThumbsDownClick}
-                        style={{ marginRight: "2rem" }}
+                        style={{ marginRight: "2rem", fontSize: "15px", padding:"5px 10px" }}
                     >
                         <i className={`fa ${isThumbsDownSelected ? 'fa-thumbs-down' : 'fa-thumbs-o-down'}`}></i>
                     </button>
-                    <button type="submit"><i className="fa fa-location-arrow"></i> Review</button>
+                    <button style={{fontSize: "15px", padding:"5px 10px"}} type="submit"><i className="fa fa-location-arrow"></i> Review</button>
                 </div>
             </div>
         </form >
