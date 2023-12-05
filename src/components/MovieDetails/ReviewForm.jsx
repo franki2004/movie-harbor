@@ -20,7 +20,7 @@ export default function ReviewForm({ movieId, onReviewCreated }) {
         setIsThumbsUpSelected(false);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const newErrors = [];
@@ -45,14 +45,15 @@ export default function ReviewForm({ movieId, onReviewCreated }) {
         };
 
         if (newErrors.length === 0) {
+
+
             setIsThumbsDownSelected(false)
             setIsThumbsUpSelected(false)
             setReviewText("")
-            reviewService.create(movieId, reviewText, thumbs)
+            await reviewService.create(movieId, reviewText, thumbs)
             onReviewCreated()
         }
-    };
-
+    }
     return (
         <form onSubmit={handleSubmit}>
             <div className="review-input">
@@ -92,4 +93,3 @@ export default function ReviewForm({ movieId, onReviewCreated }) {
         </form >
     );
 }
-

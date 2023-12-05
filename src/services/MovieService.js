@@ -2,8 +2,10 @@ import * as request from "../../lib/request";
 
 const baseUrl = 'http://localhost:3030/data/movies'
 
-export const getAll = async () => {
-    const result = await request.get(baseUrl);
+export const getAll = async (page) => {
+    const pageSize = 21;
+    const offset = (page - 1) * pageSize;
+    const result = await request.get(`${baseUrl}/?offset=${offset}&pageSize=${pageSize}`);
 
     return result;
 };
@@ -18,8 +20,8 @@ export const getLatest = async () => {
 
     return result;
 }
-export const getTrending = async () => {
-    const result = await request.get(`${baseUrl}?sortBy=clickCount%20desc`);
+export const getMostReviewed = async () => {
+    const result = await request.get(`${baseUrl}?sortBy=reviewsCount%20desc`);
 
     return result;
 }

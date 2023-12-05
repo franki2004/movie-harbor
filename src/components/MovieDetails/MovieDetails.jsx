@@ -1,14 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom"
 import * as movieService from '../../services/movieService'
 import * as reviewService from '../../services/reviewService'
 import ReviewForm from "./ReviewForm"
+import AuthContext from "../../contexts/authContext"
+import styles from './MovieDetails.module.css'
+
 
 export default function MovieDetails() {
     const { movieId } = useParams()
+    const { userId } = useContext(AuthContext)
     const [movie, setMovie] = useState({})
     const [reviews, setReviews] = useState([])
+
     const fetchMovieAndReviews = async () => {
         try {
             const movieData = await movieService.getOne(movieId);
@@ -21,7 +26,7 @@ export default function MovieDetails() {
     };
     useEffect(() => {
         fetchMovieAndReviews();
-    }, [movieId]);
+    }, [movieId, reviews]);
 
     const positiveReviews = Object.values(reviews).filter((review) => review.thumbsUp)
     const percentPositive = (positiveReviews.length / Object.values(reviews).length) * 100
@@ -32,6 +37,13 @@ export default function MovieDetails() {
         color = "darkorange"
     } else {
         color = "green"
+    }
+    const handleEditClick = () => {
+        console.log("edit")
+    };
+
+    const handleDeleteClick = async (reviewId) => {
+        await reviewService.deleteReview(reviewId)
     }
 
     return (
@@ -56,7 +68,7 @@ export default function MovieDetails() {
                                     <span>{movie.category}</span>
                                 </div>
                                 <div className="anime__details__rating">
-                                    {reviews.length> 0 && <div className="rating" style={{color: color}}> Positive Reviews: {percentPositive.toFixed(2)}%</div>}
+                                    {reviews.length > 0 && <div className="rating" style={{ color: color }}> Positive Reviews: {percentPositive.toFixed(2)}%</div>}
                                     <span>{reviews.length} Reviews</span>
                                 </div>
                                 <p>{movie.description}</p>
@@ -73,20 +85,26 @@ export default function MovieDetails() {
                                 <div className="section-title">
                                     <h5>Your Review</h5>
                                 </div>
-                                <ReviewForm movieId={movie._id} onReviewCreated={fetchMovieAndReviews} />
+                                <ReviewForm
+                                    movieId={movie._id}
+                                    onReviewCreated={fetchMovieAndReviews}
+    
+                                />
                             </div>
                             <div className="section-title">
                                 <h5>Reviews</h5>
                             </div>
 
-                            {reviews.map(({ _id, reviewText, _createdOn, owner: { email } }) => {
+                            {reviews.map(({ _id, reviewText, _createdOn, thumbsUp, thumbsDown, owner }) => {
                                 const reviewDate = new Date(_createdOn)
                                 const formattedDate = `${reviewDate.getDate()}-${reviewDate.getMonth() + 1}-${reviewDate.getFullYear()}`
                                 return (
                                     <div key={_id} className="anime__review__item">
                                         <div className="anime__review__item__text">
-                                            <h6>{email} - <span>{formattedDate}</span></h6>
+                                            <h6>{owner.email} - {thumbsUp ? <i className="fa fa-thumbs-up"></i> : <i className="fa fa-thumbs-down"></i>} - <span>{formattedDate}</span></h6>
                                             <p>{reviewText}</p>
+                                            {userId === owner._id && <div><button onClick={() => handleEditClick( {_id, reviewText, _createdOn, thumbsUp, thumbsDown, owner} )} className={styles.editDeleteBtn}>Edit</button>
+                                                <button onClick={() => handleDeleteClick(_id)} className={styles.editDeleteBtn}>Delete</button></div>}
                                         </div>
                                     </div>)
                             })}
