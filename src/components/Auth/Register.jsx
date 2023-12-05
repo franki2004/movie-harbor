@@ -1,4 +1,5 @@
-import { useState, useContext } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Path from "../../paths"
 import AuthContext from "../../contexts/authContext"
@@ -13,30 +14,14 @@ export default function Register() {
     const [passwordError, setPasswordError] = useState("")
     const [registrationError, setRegistrationError] = useState("")
 
-    const handleSubmit = (e) => {
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
+    const usernameRegex = /^[a-z0-9_-]{4,15}$/
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g
-        const usernameRegex = /^[a-z0-9_-]{4,15}$/
-        setEmailError("")
-        setUsernameError("")
-        setPasswordError("")
-        setRegistrationError("")
-
-        if (!emailRegex.test(email)) {
-            setEmailError("Please enter a valid email address.");
-        }
-
-        if (!usernameRegex.test(username)) {
-            setUsernameError("Username must consist of at least 4 and maximum of 15 characters.");
-        }
-
-        if (password.length > 30 || password.length < 5) {
-            setPasswordError("Password must consist of 5-30 characters.");
-        }
-
         if (!emailError && !usernameError && !passwordError) {
-            registerSubmitHandler({ email, password, username })
+            await registerSubmitHandler({ email, password, username })
                 .catch((error) => {
                     if (error.code === 409) {
                         setRegistrationError(error.message);
@@ -46,6 +31,25 @@ export default function Register() {
                 });
         }
     };
+
+
+    useEffect(() => {
+        if (email && !emailRegex.test(email)) {
+            setEmailError("Please enter a valid email address.");
+        } else setEmailError("")
+    }, [email])
+
+    useEffect(() => {
+        if (username && !usernameRegex.test(username)) {
+            setUsernameError("Username must consist of at least 4 and maximum of 15 characters.");
+        } else setUsernameError("")
+    }, [username])
+
+    useEffect(() => {
+        if (password && (password.length > 30 || password.length < 5)) {
+            setPasswordError("Password must consist of 5-30 characters.");
+        } else setPasswordError("")
+    }, [password])
 
     return (
         <section
