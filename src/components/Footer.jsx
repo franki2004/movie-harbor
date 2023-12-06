@@ -17,8 +17,6 @@ export default function Footer() {
                         <div className="footer__nav">
                             <ul>
                                 <li className="active"><Link to={Path.Home}>Homepage</Link></li>
-                                <li><a href="./categories.html">Categories</a></li>
-                                <li><a href="./blog.html">Our Blog</a></li>
                                 <li><a href="#">Contacts</a></li>
                             </ul>
                         </div>

@@ -21,6 +21,7 @@ export default function MovieList() {
 
         fetchData()
     }, [currentPage])
+
     const handleNextPage = () => {
         setCurrentPage(currentPage + 1);
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -35,6 +36,7 @@ export default function MovieList() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
+    
     useEffect(() => {
         const fetchReviewsCounts = async () => {
             try {
@@ -61,7 +63,8 @@ export default function MovieList() {
     return (
         <>
             {movies.map(movie => (
-                <Movie key={movie._id} {...movie} reviewsCount={reviewsCounts[movie._id]} percentPositive={percentages[movie._id]} />
+                <div key={movie._id} className="col-lg-4 col-md-6 col-sm-6">
+                <Movie {...movie} reviewsCount={reviewsCounts[movie._id]} percentPositive={percentages[movie._id]} /></div>
             ))}
 
             {movies.length === 0 && (

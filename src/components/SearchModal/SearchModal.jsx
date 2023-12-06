@@ -1,13 +1,28 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-
+import * as movieService from '../../services/movieService'
 import styles from './SearchModal.module.css'
+import Path from '../../paths';
+import { useNavigate } from 'react-router-dom';
+
 export default function SearchModal({ closeModal }) {
     const [searchText, setSearchText] = useState('');
+    const [moviesData, setMoviesData] = useState([])
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(`Search for: ${searchText}`);
+        try {
+            const result = await movieService.getSearched(searchText);
+            setMoviesData(result)
+            console.log(result)
+            navigate(Path.Search, { state: { moviesData: result } });
+        } catch (error) {
+            console.error('Error fetching search results:', error);
+        }
+
+
         closeModal(false);
     };
     return (

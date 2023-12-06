@@ -5,7 +5,7 @@ const baseUrl = 'http://localhost:3030/data/movies'
 export const getAll = async (page) => {
     const pageSize = 21;
     const offset = (page - 1) * pageSize;
-    const result = await request.get(`${baseUrl}/?offset=${offset}&pageSize=${pageSize}`);
+    const result = await request.get(`${baseUrl}?offset=${offset}&pageSize=${pageSize}`);
 
     return result;
 };
@@ -20,9 +20,9 @@ export const getLatest = async () => {
 
     return result;
 }
-export const getMostReviewed = async () => {
-    const result = await request.get(`${baseUrl}?sortBy=reviewsCount%20desc`);
-
+export const getSearched = async(searchText) => {
+    const result = await request.get(`${baseUrl}?where=title LIKE %22${searchText}%22`)
+    
     return result;
 }
 

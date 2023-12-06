@@ -48,6 +48,7 @@ export default function MovieDetails() {
     }
     const handleDeleteClick = async (reviewId) => {
         await reviewService.deleteReview(reviewId)
+        fetchMovieAndReviews()
     }
 
     return (

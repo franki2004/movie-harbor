@@ -11,6 +11,7 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Logout from './components/Auth/Logout';
 import NotFound from './components/NotFound/Notfound'
+import SearchResults from './components/SearchModal/SearchResults';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
             <Header />
 
             <Routes>
+                <Route path={Path.Search} element={<SearchResults />}/>
                 <Route path={Path.Home} element={<Main />} />
                 <Route path={Path.MovieDetails} element={<MovieDetails />} />
                 <Route path={Path.Login} element={<Login />} />
