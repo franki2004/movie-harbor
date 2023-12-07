@@ -12,6 +12,7 @@ import Register from './components/Auth/Register';
 import Logout from './components/Auth/Logout';
 import NotFound from './components/NotFound/Notfound'
 import SearchResults from './components/SearchModal/SearchResults';
+import UserReviews from './components/UserReviews/UserReviews';
 
 function App() {
     return (
@@ -19,13 +20,14 @@ function App() {
             <Header />
 
             <Routes>
-                <Route path={Path.Search} element={<SearchResults />}/>
+                <Route path={Path.Search} element={<SearchResults />} />
                 <Route path={Path.Home} element={<Main />} />
                 <Route path={Path.MovieDetails} element={<MovieDetails />} />
                 <Route path={Path.Login} element={<Login />} />
                 <Route path={Path.Register} element={<Register />} />
                 <Route path={Path.Logout} element={<Logout />} />
-                <Route path={Path.NotFound} element={<NotFound/>} />
+                <Route path={Path.NotFound} element={<NotFound />} />
+                <Route path={Path.UserReviews} element={<UserReviews />} />
             </Routes>
 
             <Footer />

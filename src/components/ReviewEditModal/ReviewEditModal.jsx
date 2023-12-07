@@ -51,7 +51,7 @@ export default function ReviewEditModal({openEditModal, reviewData, refresh}) {
             setReviewText("")
             openEditModal(false)
             const movieId = reviewData.movieId
-            const ownerId = reviewData.owner._Id
+            const ownerId = reviewData._ownerId
             const _createdOn = reviewData._createdOn
 
             await reviewService.edit(reviewData._id, {reviewText, thumbsUp:isThumbsUpSelected, thumbsDown:isThumbsDownSelected, movieId, ownerId, _createdOn })

@@ -22,8 +22,12 @@ export const create = async (movieId, reviewText, thumbs) => {
 
     return newReview;
 };
+export const getUserReviews = async (userId) => {
+    const result = await request.get(`${baseUrl}?where=_ownerId%3D%22${userId}%22`)
+    return result;
+}
 export const deleteReview = async (reviewId) => {
-    const result = await request.remove(`http://localhost:3030/data/reviews/${reviewId}`)
+    const result = await request.remove(`${baseUrl}/${reviewId}`)
     return result
 }
 export const edit = async (reviewId, reviewData) => {

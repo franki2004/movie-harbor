@@ -6,7 +6,7 @@ import SearchModal from "./SearchModal/SearchModal";
 export default function Header() {
     const [openSearchModal, setOpenSearchModal] = useState(false)
     const { isAuthenticated, email } = useContext(AuthContext);
-    
+
     return (
         <>
             <header className="header">
@@ -23,7 +23,7 @@ export default function Header() {
                                 <nav className="header__menu mobile-menu">
                                     <ul>
                                         <li className="active"><Link to={Path.Home}>Homepage</Link></li>
-                                        <li><a href="#">Contacts</a></li>
+                                        <li><Link to={Path.UserReviews}>My Reviews</Link></li>
                                     </ul>
                                 </nav>
                             </div>

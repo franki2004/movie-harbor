@@ -7,6 +7,7 @@ const Path = {
     ReviewDelete: '/reviews/:reviewId/delete',
     MovieDetails: '/movies/:movieId',
     Search: '/movies/search',
+    UserReviews: '/my-reviews',
     NotFound: '*'
 };
 
