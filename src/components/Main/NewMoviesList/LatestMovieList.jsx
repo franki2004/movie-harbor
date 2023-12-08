@@ -18,7 +18,7 @@ export default function NewMovieList() {
             ))}
 
             {latestMovies.length === 0 && (
-                <h2>No new Movies</h2>)
+                <h2 style={{color:"#ff5252"}}>No new Movies</h2>)
             }
         </>
 
