@@ -18,7 +18,7 @@ export default function Header() {
                                 <Link to={Path.Home}><img src='/img/logo.png' alt="logo" /></Link>
                             </div>
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-4">
                             <div className="header__nav">
                                 <nav className="header__menu mobile-menu">
                                     <ul>
@@ -34,8 +34,7 @@ export default function Header() {
 
                                 {!isAuthenticated ? <Link to={Path.Login}><i className="fa fa-sign-in" aria-hidden="true"></i></Link> :
                                     <Link to={Path.Logout}><i className="fa fa-sign-out" aria-hidden="true"></i></Link>}
-
-                                {isAuthenticated && <p style={{ display: "inline", color: "white" }}>{email}</p>}
+                                {isAuthenticated && <div className="logged-user" style={{ display: "inline", color: "white" }}>{email}</div>}
                             </div>
                         </div>
                     </div>

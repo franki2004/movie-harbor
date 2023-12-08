@@ -14,9 +14,9 @@ export default function NewMovie({
                     backgroundImage: `url(${img})`,
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition:  '50% 50%',
+                    backgroundPosition:  '50% 35%',
                     marginBottom: '0px',
-                    height: '275px'
+                    height: '280px'
                 }}>
 
             </div >
