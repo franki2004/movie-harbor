@@ -14,6 +14,9 @@ export default function SearchModal({ closeModal }) {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
+            if (searchText === "") {
+                return null;
+            }
             const result = await movieService.getSearched(searchText);
             setMoviesData(result)
             console.log(result)

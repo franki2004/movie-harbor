@@ -52,7 +52,7 @@ export default function UserReviews() {
     return (
         <>
             {openEditModal && <ReviewEditModal refresh={() => fetchReviews()} openEditModal={setOpenEditModal} reviewData={reviewToEditData} />}
-            {userReviews && userReviews.map(({ review, movie }) => {
+            {userReviews.length > 0 ? userReviews.map(({ review, movie }) => {
                 const reviewDate = new Date(review._createdOn);
                 const formattedDate = `${reviewDate.getDate()}-${reviewDate.getMonth() + 1}-${reviewDate.getFullYear()}`;
 
@@ -101,7 +101,16 @@ export default function UserReviews() {
                         </div>
                     </div>
                 );
-            })}
+            }) :
+                <h5 style={{
+                    fontSize: "60px",
+                    color: "#ff5252",
+                    fontWeight: "bold",
+                    margin: "0",
+                    marginLeft: "20%",
+                    marginBottom: "61vh",
+                    marginTop: "5%"
+                }}>You don&apos;t have any reviews yet.</h5>}
         </>)
 }
 

@@ -45,16 +45,23 @@ export default function SearchResults() {
                                 </div>
                             </div>
                             <div className="row">
-                                {movies.map(movie => (
+                                {movies.length > 0 ? movies.map(movie => (
                                     <div key={movie._id} className="col-lg-3 col-md-4 col-sm-6">
-                                    <Movie {...movie} reviewsCount={reviewsCounts[movie._id]} percentPositive={percentages[movie._id]} />
-                                </div>))}
+                                        <Movie {...movie} reviewsCount={reviewsCounts[movie._id]} percentPositive={percentages[movie._id]} />
+                                    </div>)) :
+                                    <h5 style={{
+                                        fontSize: "60px",
+                                        color: "#ff5252",
+                                        fontWeight: "bold",
+                                        marginBottom: "45vh",
+
+                                    }}>No Result Found</h5>}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
 
     )
 }

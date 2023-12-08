@@ -3,7 +3,7 @@ import * as request from "../../lib/request";
 const baseUrl = 'http://localhost:3030/data/movies'
 
 export const getAll = async (page) => {
-    const pageSize = 21;
+    const pageSize = 12;
     const offset = (page - 1) * pageSize;
     const result = await request.get(`${baseUrl}?offset=${offset}&pageSize=${pageSize}`);
 
