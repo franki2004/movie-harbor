@@ -87,7 +87,7 @@ export default function Register() {
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
                                 {usernameError && <p style={{ color: 'red' }}>{usernameError}</p>}
-                                <span className="icon_profile"></span>
+                                <span className="fa fa-user" style={{paddingLeft:"3px"}}></span>
                             </div>
                             <div className="input__item">
                                 <input
